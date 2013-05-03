@@ -1,0 +1,16 @@
+<ul id='items'></ul>
+
+<script type='text/javascript'>
+  $(document).ready(initialize);
+
+  function initialize(){
+    // var
+    source = new EventSource('/items');
+    source.addEventListener('message', update);
+  }
+
+  function update(event){
+    var item = $('<li>').text(event.data);
+    $('#items').append(item);
+  }
+</script>
